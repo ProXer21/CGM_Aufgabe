@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  image: mcr.microsoft.com/dotnet/sdk:5.0
+  script:
+    - dotnet restore
+    - dotnet build
+
+test:
+  stage: test
+  image: mcr.microsoft.com/dotnet/sdk:5.0
+  script:
+    - dotnet test
+
+deploy:
+  stage: deploy
+  image: mcr.microsoft.com/dotnet/sdk:5.0
+  script:
+    - dotnet publish
